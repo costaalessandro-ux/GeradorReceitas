@@ -52,7 +52,7 @@ public class Receita {
         this.ingredientes = ingredientes;
     }
     
-    public String getModepreparo(){
+    public String getModopreparo(){
         return modopreparo;
     }
     
