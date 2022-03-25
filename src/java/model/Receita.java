@@ -20,6 +20,14 @@ public class Receita {
         this.imagem = imagem;
     }
     
+     public Receita(String autor, String titulo, String ingredientes, String modopreparo){
+        this.autor = autor;
+        this.titulo = titulo;
+        this.ingredientes = ingredientes;
+        this.modopreparo = modopreparo;
+    
+    }
+    
     public int getId(){
         return id;
     }
