@@ -1,9 +1,8 @@
 
 package dao;
 
-import com.mysql.jdbc.Connection;
 //será utilizado com postgres!
-//import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -21,7 +20,7 @@ private final String CLASSDRIVER="com.mysql.jdbc.Driver";
 
 public Connection getConexao() throws ClassNotFoundException, SQLException{
 Class.forName(CLASSDRIVER);
-conexao = (Connection) DriverManager.getConnection(DRIVER,USER,SENHA);
+conexao = DriverManager.getConnection(DRIVER,USER,SENHA);
 return conexao;
 }
 

@@ -30,8 +30,7 @@ public class ReceitaDao {
         preparar.setString(2,receita.getTitulo());
         preparar.setString(3,receita.getIngredientes());
         preparar.setString(4,receita.getModopreparo());
-        //preparar.setDate(5,(Date)receita.getData());
-        //preparar.setFile(6,receita.getImagem());
+       
         preparar.execute();
         preparar.close();
     }

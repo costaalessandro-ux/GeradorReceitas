@@ -25,7 +25,7 @@ public class ReceitaServlet extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet ReceitaServlet</title>");            
             out.println("</head>");
-            
+            out.println("<body>");
             /*Para fiz de testes não inclui a variavel imagem e Data;
                É necessario inserir a varial de imagem  e data posteriormente;
             */
@@ -42,12 +42,7 @@ public class ReceitaServlet extends HttpServlet {
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
             out.print("Gravado com sucesso!");
-            
-            
-            
-            
-            out.println("<body>");
-            out.println("<h1>Servlet ReceitaServlet at " + request.getContextPath() + "</h1>");
+            out.print("<a href='gerador.html'>VOLTAR</a>");
             out.println("</body>");
             out.println("</html>");
         }
