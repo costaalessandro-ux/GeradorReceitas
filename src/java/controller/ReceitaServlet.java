@@ -4,6 +4,7 @@ import dao.ReceitaDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static jdk.nashorn.internal.objects.Global.getDate;
 import model.Receita;
 
 public class ReceitaServlet extends HttpServlet {
@@ -30,15 +32,19 @@ public class ReceitaServlet extends HttpServlet {
                É necessario inserir a varial de imagem  e data posteriormente;
             */
             
-            String autor, titulo, ingredientes, modopreparo;
-            //Date data;
+            String autor, titulo, ingredientes, modopreparo, data;
+            
             
             autor = request.getParameter("autor");
             titulo = request.getParameter("titulo");
             ingredientes = request.getParameter("ingredientes");
             modopreparo = request.getParameter("modopreparo");
+            data = request.getParameter("data");
+           
             
-            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo);
+            
+            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo,data);
+            
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
             out.print("Gravado com sucesso!");
@@ -62,9 +68,7 @@ public class ReceitaServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -98,5 +102,9 @@ public class ReceitaServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String Date(String data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

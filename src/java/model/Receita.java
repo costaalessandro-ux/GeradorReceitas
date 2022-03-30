@@ -1,17 +1,16 @@
 package model;
 
 import java.io.File;
-import java.util.Date;
+
 
 
 public class Receita {
     
     private int id;
-    private String autor, titulo, ingredientes, modopreparo;
-    private Date data;
+    private String autor, titulo, ingredientes, modopreparo, data;
     private File imagem;
     
-    public Receita(String autor, String titulo, String ingredientes, String modopreparo, Date data, File imagem){
+    public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data, File imagem){
         this.autor = autor;
         this.titulo = titulo;
         this.ingredientes = ingredientes;
@@ -20,11 +19,12 @@ public class Receita {
         this.imagem = imagem;
     }
     
-     public Receita(String autor, String titulo, String ingredientes, String modopreparo){
+     public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data){
         this.autor = autor;
         this.titulo = titulo;
         this.ingredientes = ingredientes;
         this.modopreparo = modopreparo;
+        this.data = data;
     
     }
     
@@ -68,11 +68,11 @@ public class Receita {
         this.modopreparo = modopreparo;
     }
     
-    public Date getData(){
+    public String getData(){
         return data;
     }
     
-    public void setData(Date data){
+    public void setData(String data){
         this.data = data;
     }
     
