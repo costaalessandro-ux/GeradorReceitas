@@ -1,18 +1,18 @@
 package controller;
 
 import dao.ReceitaDao;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static jdk.nashorn.internal.objects.Global.getDate;
+import static javax.xml.bind.DatatypeConverter.parseString;
 import model.Receita;
 
 public class ReceitaServlet extends HttpServlet {
@@ -33,6 +33,7 @@ public class ReceitaServlet extends HttpServlet {
             */
             
             String autor, titulo, ingredientes, modopreparo, data;
+            InputStream imagem = null;
             
             
             autor = request.getParameter("autor");
@@ -40,10 +41,10 @@ public class ReceitaServlet extends HttpServlet {
             ingredientes = request.getParameter("ingredientes");
             modopreparo = request.getParameter("modopreparo");
             data = request.getParameter("data");
-           
+            imagem = request(imagem);
             
             
-            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo,data);
+            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo,data,imagem);
             
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
@@ -54,15 +55,6 @@ public class ReceitaServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -71,16 +63,10 @@ public class ReceitaServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -91,6 +77,7 @@ public class ReceitaServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     /**
@@ -103,8 +90,12 @@ public class ReceitaServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private String Date(String data) {
+    private InputStream request(InputStream imagem) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+   
+
 }
+
+    

@@ -1,6 +1,6 @@
 package model;
 
-import java.io.File;
+import java.io.InputStream;
 
 
 
@@ -8,9 +8,9 @@ public class Receita {
     
     private int id;
     private String autor, titulo, ingredientes, modopreparo, data;
-    private File imagem;
+    private InputStream imagem;
     
-    public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data, File imagem){
+    public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data, InputStream imagem){
         this.autor = autor;
         this.titulo = titulo;
         this.ingredientes = ingredientes;
@@ -76,11 +76,11 @@ public class Receita {
         this.data = data;
     }
     
-    public File getImagem(){
+    public InputStream getImagem(){
         return imagem;
     }
     
-    public void setImagem(File imagem){
+    public void setImagem(InputStream imagem){
         this.imagem = imagem;
     }
 
