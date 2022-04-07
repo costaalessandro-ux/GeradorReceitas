@@ -25,7 +25,7 @@ public class ReceitaDao {
     
     
     public void inserir(Receita receita) throws SQLException{
-        SQL = "insert into registro (autor,titulo,ingredientes,modopreparo,data,imagem) values (?,?,?,?,?,?)";
+        SQL = "insert into registro (autor,titulo,ingredientes,modopreparo,data) values (?,?,?,?,?)";
         
         
         
@@ -36,9 +36,9 @@ public class ReceitaDao {
         preparar.setString(4,receita.getModopreparo());
         preparar.setString(5,receita.getData());
        // preparar.setBlob(6,receita.getImagem());
-        if (receita.getImagem() != null) {
+       /*if (receita.getImagem() != null) {
                 preparar.setBlob(3, receita.getImagem());
-        }
+        }*/
         preparar.execute();
         preparar.close();
     }

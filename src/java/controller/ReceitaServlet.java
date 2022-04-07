@@ -33,7 +33,7 @@ public class ReceitaServlet extends HttpServlet {
             */
             
             String autor, titulo, ingredientes, modopreparo, data;
-            InputStream imagem = null;
+            //InputStream imagem = null;
             
             
             autor = request.getParameter("autor");
@@ -41,10 +41,10 @@ public class ReceitaServlet extends HttpServlet {
             ingredientes = request.getParameter("ingredientes");
             modopreparo = request.getParameter("modopreparo");
             data = request.getParameter("data");
-            imagem = request(imagem);
+            //imagem = request(imagem);
             
             
-            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo,data,imagem);
+            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo,data);
             
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
@@ -58,12 +58,12 @@ public class ReceitaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
     }
 
@@ -72,9 +72,7 @@ public class ReceitaServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
