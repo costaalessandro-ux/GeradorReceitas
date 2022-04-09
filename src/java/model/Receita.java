@@ -10,6 +10,10 @@ public class Receita {
     private String autor, titulo, ingredientes, modopreparo, data;
     private InputStream imagem;
     
+    public Receita(){
+        
+    }
+    
     public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data, InputStream imagem){
         this.autor = autor;
         this.titulo = titulo;

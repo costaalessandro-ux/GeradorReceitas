@@ -1,7 +1,6 @@
 package controller;
 
 import dao.ReceitaDao;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -12,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static javax.xml.bind.DatatypeConverter.parseString;
 import model.Receita;
 
 public class ReceitaServlet extends HttpServlet {
@@ -35,7 +33,6 @@ public class ReceitaServlet extends HttpServlet {
             String autor, titulo, ingredientes, modopreparo, data;
             //InputStream imagem = null;
             
-            
             autor = request.getParameter("autor");
             titulo = request.getParameter("titulo");
             ingredientes = request.getParameter("ingredientes");
@@ -43,13 +40,24 @@ public class ReceitaServlet extends HttpServlet {
             data = request.getParameter("data");
             //imagem = request(imagem);
             
-            
-            Receita receita = new Receita(autor,titulo,ingredientes,modopreparo,data);
-            
+            Receita receita = new Receita();
             ReceitaDao dao = new ReceitaDao();
-            dao.inserir(receita);
+           
+            
+            //dao.inserir(receita);
             out.print("Gravado com sucesso!");
+            out.print("<p>");
+            out.print("---------------------");
+            out.print("</p>");
+            out.print("Informações do banco de Dados: ");
+            out.print("<p>");
+            out.print("</p>");
+            out.print("");
+            dao.listar();
+            //out.print(dao.listar());
+            out.print("<p>");
             out.print("<a href='gerador.html'>VOLTAR</a>");
+            out.print("</p>");
             out.println("</body>");
             out.println("</html>");
         }
