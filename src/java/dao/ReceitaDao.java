@@ -6,17 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import java.util.List;
 import model.Receita;
 
 
 
 public class ReceitaDao {
     
-    private final Connection conexao;
-    private PreparedStatement preparar;
-    private ResultSet resultado;
-    private String SQL;
+    private static Connection conexao;
+    private static PreparedStatement preparar;
+    private static ResultSet resultado;
+    private static String SQL;
     
     public ReceitaDao() throws ClassNotFoundException, SQLException {
         conexao = new Conexao().getConexao();
@@ -38,14 +38,14 @@ public class ReceitaDao {
         preparar.execute();
         preparar.close();
     }
-   
     
-    public ArrayList<Receita> listar() throws SQLException{
+    
+    public static List<Receita> listar() throws SQLException{
+        List<Receita> vetorReceita = new ArrayList<>();
         SQL = "SELECT * FROM registro;";
         
         preparar = conexao.prepareStatement(SQL);
         
-        ArrayList<Receita> vetorReceita = new ArrayList<>();
         resultado = preparar.executeQuery();
         
         while(resultado.next()){
@@ -59,6 +59,8 @@ public class ReceitaDao {
         }
         return vetorReceita;
     }
-
+    
+    
+    
     
 }

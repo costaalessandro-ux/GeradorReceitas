@@ -1,13 +1,15 @@
 package controller;
 
-import static com.mysql.jdbc.Messages.getString;
 import dao.ReceitaDao;
+import static dao.ReceitaDao.listar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +45,8 @@ public class ReceitaServlet extends HttpServlet {
             
             Receita receita = new Receita();
             ReceitaDao dao = new ReceitaDao();
-           
+            List<Receita> list = ReceitaDao.listar();
+            
             
             //dao.inserir(receita);
             out.print("Gravado com sucesso!");
@@ -53,7 +56,13 @@ public class ReceitaServlet extends HttpServlet {
             out.print("Informações do banco de Dados: ");
             out.print("<p>");
             out.print("</p>");
-            out.print(dao.listar());
+            out.print("<table>");
+            out.print("<td>");
+            out.print(list);
+            out.print("</td>");
+            out.print("</table>");
+            
+            
             out.print("<p>");
             out.print("<a href='gerador.html'>VOLTAR</a>");
             out.print("</p>");

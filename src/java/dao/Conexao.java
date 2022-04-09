@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class Conexao {
 
 // utilizando mysql;
-private Connection conexao;
+private static Connection conexao;
 private final String DRIVER="jdbc:mysql://localhost:3306/receita?zeroDateTimeBehavior=convertToNull"; // driver para comunicar com java
 private final String SERVER="localhost"; // nome do servidor ou ip
 private final String USER="root"; // usuário do mysql
