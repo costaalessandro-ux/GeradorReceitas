@@ -1,5 +1,6 @@
 package controller;
 
+import static com.mysql.jdbc.Messages.getString;
 import dao.ReceitaDao;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,9 +53,7 @@ public class ReceitaServlet extends HttpServlet {
             out.print("Informações do banco de Dados: ");
             out.print("<p>");
             out.print("</p>");
-            out.print("");
-            dao.listar();
-            //out.print(dao.listar());
+            out.print(dao.listar());
             out.print("<p>");
             out.print("<a href='gerador.html'>VOLTAR</a>");
             out.print("</p>");

@@ -39,7 +39,7 @@ public class ReceitaDao {
         preparar.close();
     }
    
-    /*
+    
     public ArrayList<Receita> listar() throws SQLException{
         SQL = "SELECT * FROM registro;";
         
@@ -50,7 +50,7 @@ public class ReceitaDao {
         
         while(resultado.next()){
             Receita receita = new Receita();
-            //receita.setId(resulta  
+            receita.setId(resultado.getInt("id")); 
             receita.setTitulo(resultado.getString("titulo"));
             receita.setAutor(resultado.getString("autor"));
             receita.setIngredientes(resultado.getString("ingredientes"));
@@ -59,21 +59,6 @@ public class ReceitaDao {
         }
         return vetorReceita;
     }
-    */
-    
-    public void listar() throws SQLException{
-        SQL = "SELECT * FROM registro";
-        preparar = conexao.prepareStatement(SQL);
-        resultado = preparar.executeQuery();
-        
-        while(resultado.next()){
-            Receita rec = new Receita();
-            rec.setTitulo(resultado.getString("titulo"));
-            rec.setAutor(resultado.getString("autor"));
-            rec.setIngredientes(resultado.getString("ingredientes"));
-            rec.setModopreparo(resultado.getString("modopreparo"));
-        }
-    }
-   
+
     
 }
