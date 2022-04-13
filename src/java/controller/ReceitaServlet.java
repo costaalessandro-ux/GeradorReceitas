@@ -1,12 +1,12 @@
 package controller;
 
 import dao.ReceitaDao;
-import static dao.ReceitaDao.listar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -18,6 +18,8 @@ import model.Receita;
 
 public class ReceitaServlet extends HttpServlet {
 
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
@@ -33,6 +35,7 @@ public class ReceitaServlet extends HttpServlet {
                É necessario inserir a varial de imagem  e data posteriormente;
             */
             
+            
             String autor, titulo, ingredientes, modopreparo, data;
             //InputStream imagem = null;
             
@@ -45,31 +48,47 @@ public class ReceitaServlet extends HttpServlet {
             
             Receita receita = new Receita();
             ReceitaDao dao = new ReceitaDao();
-            List<Receita> list = ReceitaDao.listar();
-            
             
             //dao.inserir(receita);
+            
+
+            
             out.print("Gravado com sucesso!");
             out.print("<p>");
             out.print("---------------------");
             out.print("</p>");
-            out.print("Informações do banco de Dados: ");
-            out.print("<p>");
-            out.print("</p>");
-            out.print("<table>");
-            out.print("<td>");
-            out.print(list);
-            out.print("</td>");
-            out.print("</table>");
             
-            
-            out.print("<p>");
             out.print("<a href='gerador.html'>VOLTAR</a>");
-            out.print("</p>");
+          
             out.println("</body>");
             out.println("</html>");
+        }  
+    }
+    
+    protected void listar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
+        
+        ReceitaDao dao = new ReceitaDao();
+        ArrayList<Receita> list = dao.listar();
+        // encaminhar a lista ao documento selectInfo.jsp
+        
+        for(int i = 0; i < list.size(); i++){
+            out.println(list.get(i).getAutor());
+            out.println(list.get(i).getData());
+            out.println(list.get(i).getTitulo());
+            out.println(list.get(i).getIngredientes());
+            out.println(list.get(i).getModopreparo());
+        
+           request.setAttribute("list", list);
+           RequestDispatcher rd = request.getRequestDispatcher("selectInfos.jsp");
+           rd.forward(request, response);
+            
         }
     }
+
+    
+    
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

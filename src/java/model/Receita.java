@@ -23,7 +23,7 @@ public class Receita {
         this.imagem = imagem;
     }
     
-     public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data){
+     public Receita(String autor,String data, String titulo, String ingredientes, String modopreparo){
         this.autor = autor;
         this.titulo = titulo;
         this.ingredientes = ingredientes;
