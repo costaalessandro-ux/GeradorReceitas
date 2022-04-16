@@ -41,7 +41,7 @@ public class ReceitaDao {
     
     public ArrayList<Receita> listar(){
         ArrayList<Receita> list = new ArrayList<>();
-        SQL = "SELECT * FROM registro;";
+        SQL = "SELECT * FROM registro orde by autor;";
         
         try{
         preparar = conexao.prepareStatement(SQL);

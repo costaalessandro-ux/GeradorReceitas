@@ -80,7 +80,7 @@ public class ReceitaServlet extends HttpServlet {
             out.println(list.get(i).getModopreparo());
         
            request.setAttribute("list", list);
-           RequestDispatcher rd = request.getRequestDispatcher("selectInfos.jsp");
+           RequestDispatcher rd = request.getRequestDispatcher("../../selectInfos.jsp");
            rd.forward(request, response);
             
         }
