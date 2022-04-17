@@ -11,25 +11,24 @@ public class Receita {
     private InputStream imagem;
     
     public Receita(){
-        
+        super();
     }
     
-    public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data, InputStream imagem){
+     public Receita(String autor,String data, String titulo, String ingredientes, String modopreparo){
+        this.autor = autor;
+        this.data = data;
+        this.titulo = titulo;
+        this.ingredientes = ingredientes;
+        this.modopreparo = modopreparo; 
+    }
+     
+     public Receita(String autor, String titulo, String ingredientes, String modopreparo, String data, InputStream imagem){
         this.autor = autor;
         this.titulo = titulo;
         this.ingredientes = ingredientes;
         this.modopreparo = modopreparo;
         this.data = data;
         this.imagem = imagem;
-    }
-    
-     public Receita(String autor,String data, String titulo, String ingredientes, String modopreparo){
-        this.autor = autor;
-        this.titulo = titulo;
-        this.ingredientes = ingredientes;
-        this.modopreparo = modopreparo;
-        this.data = data;
-    
     }
     
     public int getId(){

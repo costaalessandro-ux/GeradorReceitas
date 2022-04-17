@@ -20,19 +20,20 @@
         <table>
             <thead>
                 <tr>
-                    <th>Titulo</th>
-                    <th>Data</th>
                     <th>Autor</th>
+                    <th>Data</th>
+                    <th>Titulo</th>
                     <th>Ingredientes</th>
-                    <th>Modo Preparo</th>
+                    <th>Modo de Preparo</th>
                 </tr>
             </thead>
             <tbody>
-             <%for (int i = 0; i < list.size(); i++) {%>
+             <%for(int i = 0; i < list.size(); i++) {%>
                 <tr>
-                    <td><%=list.get(i).getTitulo()%></td>
-                    <td><%=list.get(i).getData()%></td>
                     <td><%=list.get(i).getAutor()%></td>
+                    <td><%=list.get(i).getData()%></td>
+                    <td><%=list.get(i).getTitulo()%></td>
+                    <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
                 </tr>
                 <%}%>

@@ -22,14 +22,15 @@ public class ReceitaDao {
     }
     
     public void inserir(Receita receita) throws SQLException{
-        SQL = "insert into registro (autor,titulo,ingredientes,modopreparo,data) values (?,?,?,?,?)";
+        SQL = "insert into registro (autor,data,titulo,ingredientes,modopreparo) values (?,?,?,?,?)";
         
         preparar = conexao.prepareStatement(SQL);
         preparar.setString(1,receita.getAutor());
-        preparar.setString(2,receita.getTitulo());
-        preparar.setString(3,receita.getIngredientes());
-        preparar.setString(4,receita.getModopreparo());
-        preparar.setString(5,receita.getData());
+        preparar.setString(2,receita.getData());
+        preparar.setString(3,receita.getTitulo());
+        preparar.setString(4,receita.getIngredientes());
+        preparar.setString(5,receita.getModopreparo());
+        
        // preparar.setBlob(6,receita.getImagem());
        /*if (receita.getImagem() != null) {
                 preparar.setBlob(3, receita.getImagem());
@@ -41,7 +42,7 @@ public class ReceitaDao {
     
     public ArrayList<Receita> listar(){
         ArrayList<Receita> list = new ArrayList<>();
-        SQL = "SELECT * FROM registro orde by autor;";
+        SQL = "SELECT * FROM registro order by autor;";
         
         try{
         preparar = conexao.prepareStatement(SQL);
@@ -50,11 +51,11 @@ public class ReceitaDao {
         
         while(resultado.next()){
             //Integer id = resultado.getInt(1); 
-            String autor = resultado.getString(2); 
-            String data = resultado.getString(3);
-            String titulo = resultado.getString(4); 
-            String ingredientes = resultado.getString(5); 
-            String modopreparo = resultado.getString(6); 
+            String autor = resultado.getString(1); 
+            String data = resultado.getString(2);
+            String titulo = resultado.getString(3); 
+            String ingredientes = resultado.getString(4); 
+            String modopreparo = resultado.getString(5); 
             list.add(new Receita(autor,data,titulo,ingredientes,modopreparo));
         }
         conexao.close();

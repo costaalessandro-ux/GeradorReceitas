@@ -1,6 +1,7 @@
 package controller;
 
 import dao.ReceitaDao;
+import dao.Conexao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -34,72 +35,33 @@ public class ReceitaServlet extends HttpServlet {
             /*Para fiz de testes não inclui a variavel imagem e Data;
                É necessario inserir a varial de imagem  e data posteriormente;
             */
-            
-            
-            String autor, titulo, ingredientes, modopreparo, data;
+            String autor, data, titulo, ingredientes, modopreparo;
             //InputStream imagem = null;
-            
             autor = request.getParameter("autor");
+            data = request.getParameter("data");
             titulo = request.getParameter("titulo");
             ingredientes = request.getParameter("ingredientes");
             modopreparo = request.getParameter("modopreparo");
-            data = request.getParameter("data");
             //imagem = request(imagem);
-            
-            Receita receita = new Receita();
+            Receita receita = new Receita(autor,data,titulo, ingredientes,modopreparo);
             ReceitaDao dao = new ReceitaDao();
-            
-            //dao.inserir(receita);
-            
-
-            
+            dao.inserir(receita);
             out.print("Gravado com sucesso!");
-            out.print("<p>");
-            out.print("---------------------");
-            out.print("</p>");
-            
             out.print("<a href='gerador.html'>VOLTAR</a>");
-          
             out.println("</body>");
             out.println("</html>");
         }  
     }
     
-    protected void listar(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-        
-        ReceitaDao dao = new ReceitaDao();
-        ArrayList<Receita> list = dao.listar();
-        // encaminhar a lista ao documento selectInfo.jsp
-        
-        for(int i = 0; i < list.size(); i++){
-            out.println(list.get(i).getAutor());
-            out.println(list.get(i).getData());
-            out.println(list.get(i).getTitulo());
-            out.println(list.get(i).getIngredientes());
-            out.println(list.get(i).getModopreparo());
-        
-           request.setAttribute("list", list);
-           RequestDispatcher rd = request.getRequestDispatcher("../../selectInfos.jsp");
-           rd.forward(request, response);
-            
-        }
-    }
-
-    
-    
-    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }  
     }
 
     @Override
