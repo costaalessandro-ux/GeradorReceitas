@@ -46,11 +46,18 @@ public class ReceitaServlet extends HttpServlet {
             Receita receita = new Receita(autor,data,titulo, ingredientes,modopreparo);
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
+            out.println(dao.listar());
             out.print("Gravado com sucesso!");
+            // metodo select ----------
             out.print("<a href='gerador.html'>VOLTAR</a>");
             out.println("</body>");
             out.println("</html>");
         }  
+        // metodo select ----------
+        
+        
+        
+        
     }
     
 
@@ -62,7 +69,33 @@ public class ReceitaServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }  
+        
+        String action = request.getServletPath();
+        if(action.equals("/main")){
+            try {
+                contatos(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
+    
+    // listar infos
+    protected void contatos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+            //response.sendRedirect("selectInfos.jsp");
+            ReceitaDao dao = new ReceitaDao();
+            ArrayList<Receita> list = dao.listar();
+            for(int i = 0; i < list.size(); i++){
+                System.out.println(list.get(i).getAutor());
+                System.out.println(list.get(i).getData());
+                System.out.println(list.get(i).getTitulo());
+                System.out.println(list.get(i).getIngredientes());
+                System.out.println(list.get(i).getModopreparo());
+            }
+        }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

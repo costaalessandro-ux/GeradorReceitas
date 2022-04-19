@@ -2,11 +2,12 @@
 <%@page import="model.Receita"%>
 <%@page import="java.util.ArrayList"%>
 
-
+<%--
 <%
     ArrayList<Receita> list = (ArrayList<Receita>) 
     request.getAttribute("list");
 %>
+--%>
 
 
 <!DOCTYPE html>
@@ -27,6 +28,7 @@
                     <th>Modo de Preparo</th>
                 </tr>
             </thead>
+            <%--
             <tbody>
              <%for(int i = 0; i < list.size(); i++) {%>
                 <tr>
@@ -38,6 +40,7 @@
                 </tr>
                 <%}%>
             </tbody>
+            --%>
         </table>
     </body>
 </html>
