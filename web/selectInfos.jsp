@@ -2,22 +2,21 @@
 <%@page import="model.Receita"%>
 <%@page import="java.util.ArrayList"%>
 
-<%--
+
 <%
     ArrayList<Receita> list = (ArrayList<Receita>) 
-    request.getAttribute("list");
+    request.getAttribute("listarInfos");
 %>
---%>
 
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Gerador de Receitas</title>
     </head>
     <body>
-        <h1>Lista Dados</h1>
+        <h1>Select Infos</h1>
         <table>
             <thead>
                 <tr>
@@ -28,9 +27,9 @@
                     <th>Modo de Preparo</th>
                 </tr>
             </thead>
-            <%--
+            
             <tbody>
-             <%for(int i = 0; i < list.size(); i++) {%>
+             <% for(int i = 0; i < list.size(); i++) {%>
                 <tr>
                     <td><%=list.get(i).getAutor()%></td>
                     <td><%=list.get(i).getData()%></td>
@@ -40,7 +39,7 @@
                 </tr>
                 <%}%>
             </tbody>
-            --%>
+            
         </table>
     </body>
 </html>

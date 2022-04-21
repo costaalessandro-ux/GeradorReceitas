@@ -5,7 +5,6 @@ import dao.Conexao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -18,23 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.Receita;
 
 public class ReceitaServlet extends HttpServlet {
-
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ReceitaServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            /*Para fiz de testes não inclui a variavel imagem e Data;
-               É necessario inserir a varial de imagem  e data posteriormente;
-            */
             String autor, data, titulo, ingredientes, modopreparo;
             //InputStream imagem = null;
             autor = request.getParameter("autor");
@@ -43,69 +29,70 @@ public class ReceitaServlet extends HttpServlet {
             ingredientes = request.getParameter("ingredientes");
             modopreparo = request.getParameter("modopreparo");
             //imagem = request(imagem);
-            Receita receita = new Receita(autor,data,titulo, ingredientes,modopreparo);
+            Receita receita = new Receita(autor, data, titulo, ingredientes, modopreparo);
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
-            out.println(dao.listar());
-            out.print("Gravado com sucesso!");
-            // metodo select ----------
-            out.print("<a href='gerador.html'>VOLTAR</a>");
-            out.println("</body>");
-            out.println("</html>");
-        }  
-        // metodo select ----------
-        
-        
-        
-        
     }
     
+
+    // listar infos
+    protected void listarInfos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        ReceitaDao dao = new ReceitaDao();
+        ArrayList<Receita> list = dao.listar();
+        request.setAttribute("listarInfos", list);
+        RequestDispatcher rd = request.getRequestDispatcher("selectInfos.jsp");
+        rd.forward(request, response);
+        response.sendRedirect("selectInfos.jsp");
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        /*
+        // try do processRequest
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        }
+        */
         
-        String action = request.getServletPath();
-        if(action.equals("/main")){
-            try {
-                contatos(request, response);
-            } catch (SQLException ex) {
-                Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        // try do listarInfos
+        
+        /*
+        try {
+            listarInfos(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
     }
-    
-    // listar infos
-    protected void contatos(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-            //response.sendRedirect("selectInfos.jsp");
-            ReceitaDao dao = new ReceitaDao();
-            ArrayList<Receita> list = dao.listar();
-            for(int i = 0; i < list.size(); i++){
-                System.out.println(list.get(i).getAutor());
-                System.out.println(list.get(i).getData());
-                System.out.println(list.get(i).getTitulo());
-                System.out.println(list.get(i).getIngredientes());
-                System.out.println(list.get(i).getModopreparo());
-            }
-        }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        /*
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
         
+        /*
+        try {
+            listarInfos(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
     }
 
     /**
@@ -122,8 +109,4 @@ public class ReceitaServlet extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-
 }
-
-    
