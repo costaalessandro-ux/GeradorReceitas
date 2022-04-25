@@ -19,19 +19,10 @@ import model.Receita;
 public class ReceitaServlet extends HttpServlet {
     
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-            String autor, data, titulo, ingredientes, modopreparo;
-            //InputStream imagem = null;
-            autor = request.getParameter("autor");
-            data = request.getParameter("data");
-            titulo = request.getParameter("titulo");
-            ingredientes = request.getParameter("ingredientes");
-            modopreparo = request.getParameter("modopreparo");
-            //imagem = request(imagem);
-            Receita receita = new Receita(autor, data, titulo, ingredientes, modopreparo);
-            ReceitaDao dao = new ReceitaDao();
-            dao.inserir(receita);
+    Receita receita = new Receita();
+    
+    public ReceitaServlet(){
+        super();
     }
     
 
@@ -61,7 +52,7 @@ public class ReceitaServlet extends HttpServlet {
         
         // try do listarInfos
         
-        /*
+        
         try {
             listarInfos(request, response);
         } catch (SQLException ex) {
@@ -69,7 +60,7 @@ public class ReceitaServlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+        
     }
 
     @Override
