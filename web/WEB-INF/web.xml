@@ -4,9 +4,17 @@
         <servlet-name>ReceitaServlet</servlet-name>
         <servlet-class>controller.ReceitaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>insertServlet</servlet-name>
+        <servlet-class>controller.insertServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ReceitaServlet</servlet-name>
         <url-pattern>/ReceitaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>insertServlet</servlet-name>
+        <url-pattern>/insertServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
