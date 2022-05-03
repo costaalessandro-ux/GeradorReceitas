@@ -25,6 +25,7 @@
                     <th>Titulo</th>
                     <th>Ingredientes</th>
                     <th>Modo de Preparo</th>
+                    <th colspan=\"2\">Ações</th>
                 </tr>
             </thead>
             
@@ -36,11 +37,14 @@
                     <td><%=list.get(i).getTitulo()%></td>
                     <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
+                    <td><a href="">ALTERAR</a></td>
+                    <td><a href="deleteServlet">EXCLUIR</a></td>
                 </tr>
                 <%}%>
             </tbody>
             
         </table>
-            <a href="index.html">VOLTAR</a>
+            <p>
+                <a href="index.html">VOLTAR</a></p>
     </body>
 </html>

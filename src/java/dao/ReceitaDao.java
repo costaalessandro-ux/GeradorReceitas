@@ -51,11 +51,11 @@ public class ReceitaDao {
         
         while(resultado.next()){
             //Integer id = resultado.getInt(1); 
-            String autor = resultado.getString(1); 
-            String data = resultado.getString(2);
-            String titulo = resultado.getString(3); 
-            String ingredientes = resultado.getString(4); 
-            String modopreparo = resultado.getString(5); 
+            String autor = resultado.getString(2); 
+            String data = resultado.getString(3);
+            String titulo = resultado.getString(4); 
+            String ingredientes = resultado.getString(5); 
+            String modopreparo = resultado.getString(6); 
             list.add(new Receita(autor,data,titulo,ingredientes,modopreparo));
         }
         conexao.close();
@@ -64,7 +64,18 @@ public class ReceitaDao {
        System.out.println(e);
        return null;         
     }
-    
-    
     }
+    
+    public void alter(){
+        
+    }
+    
+    public void delete(Receita receita) throws SQLException{
+        SQL = "delete from registro where autor=?";
+        preparar = conexao.prepareStatement(SQL);
+        preparar.setString(2, receita.getAutor()); 
+        preparar.execute();
+        preparar.close();
+    }
+    
 }

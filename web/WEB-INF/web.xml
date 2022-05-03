@@ -8,6 +8,14 @@
         <servlet-name>insertServlet</servlet-name>
         <servlet-class>controller.insertServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>alterServlet</servlet-name>
+        <servlet-class>controller.alterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteServlet</servlet-name>
+        <servlet-class>controller.deleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ReceitaServlet</servlet-name>
         <url-pattern>/ReceitaServlet</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>insertServlet</servlet-name>
         <url-pattern>/insertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alterServlet</servlet-name>
+        <url-pattern>/alterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/deleteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
