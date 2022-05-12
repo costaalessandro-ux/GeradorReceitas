@@ -66,8 +66,16 @@ public class ReceitaDao {
     }
     }
     
-    public void alter(){
-        
+    public void alter(Receita receita) throws SQLException{
+       SQL = "update registro set autor=?,data=?,titulo=?,ingredientes=?,modopreparo=? where autor=?";
+       preparar = conexao.prepareStatement(SQL);
+       preparar.setString(1, receita.getAutor());
+       preparar.setString(2, receita.getData());
+       preparar.setString(3, receita.getTitulo());
+       preparar.setString(4, receita.getIngredientes());
+       preparar.setString(5, receita.getModopreparo());
+       preparar.execute();
+       preparar.close();
     }
     
     public void delete(Receita receita) throws SQLException{
