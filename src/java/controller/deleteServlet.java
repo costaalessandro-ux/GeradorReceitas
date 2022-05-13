@@ -17,13 +17,13 @@ public class deleteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-           
-            String autor;
+        String autor;
             autor = request.getParameter("autor");
             Receita receita = new Receita(autor);
             ReceitaDao dao = new ReceitaDao();
             dao.delete(receita);
+        try ( PrintWriter out = response.getWriter()) {
+            
             out.println("Exclusão realizada com sucesso.");
         }
     }

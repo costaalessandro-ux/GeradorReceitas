@@ -38,11 +38,10 @@
                     <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
                     <td><a href="">ALTERAR</a></td>
-                    <td><a href="deleteServlet">EXCLUIR</a></td>
+                    <td><a href="deleteServlet?autor=<%=list.get(i).getAutor()%>">EXCLUIR</a></td>
                 </tr>
                 <%}%>
             </tbody>
-            
         </table>
             <p>
                 <a href="index.html">VOLTAR</a></p>

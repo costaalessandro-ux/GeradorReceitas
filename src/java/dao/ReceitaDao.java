@@ -81,7 +81,7 @@ public class ReceitaDao {
     public void delete(Receita receita) throws SQLException{
         SQL = "delete from registro where autor=?";
         preparar = conexao.prepareStatement(SQL);
-        preparar.setString(2, receita.getAutor()); 
+        preparar.setString(1, receita.getAutor()); 
         preparar.execute();
         preparar.close();
     }
