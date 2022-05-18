@@ -1,21 +1,25 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Receita"%>
+<%@page import="java.util.ArrayList"%>
+<%
+    
+    Receita receita = new Receita(); 
+    
+%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
-    <header><center><h1>Gerador de Receitas </h1> </center></header>
     <body>
-        
+         
        <div class="container">
             <div class="text-center">
                 <div class="mb-3">
                     <form action="insertServlet" enctype="multipart/form-data" >
                         <label for="autor">Autor</label><p>
-                        <input type="text" id="autor" name="autor"><p>
+                        <input type="text" id="autor" name="autor" value="<%=receita.getAutor()%>"><p>
                             <label for="data">Data</label><p>
                         <input type="date" id="data" name="data"><p>
                             <label for="titulo">Titulo</label><p>
