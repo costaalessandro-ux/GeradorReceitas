@@ -5,6 +5,8 @@
     ArrayList<Receita> list = (ArrayList<Receita>) 
     request.getAttribute("listarInfos");
 %>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +35,7 @@
                     <td><%=list.get(i).getTitulo()%></td>
                     <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
-                    <td><a href="formAlter.jsp?autor=<%=list.get(i).getAutor()%>">ALTERAR</a></td>
+                    <td><a href="alterServlet?autor=<%=list.get(i).getAutor()%>">ALTERAR</a></td>
                     <td><a href="deleteServlet?autor=<%=list.get(i).getAutor()%>">EXCLUIR</a></td>
                 </tr>
                 <%}%>
