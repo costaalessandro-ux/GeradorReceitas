@@ -16,6 +16,7 @@ public class Receita {
     
      public Receita(String autor){
        this.autor = autor;
+       
     }
     
      public Receita(String autor,String data, String titulo, String ingredientes, String modopreparo){

@@ -15,13 +15,13 @@
                         <label for="autor">Autor</label><p>
                         <input type="text" id="autor" name="autor" value="<%out.print(request.getAttribute("autor"));%>"><p>
                             <label for="data">Data</label><p>
-                        <input type="date" id="data" name="data" <%out.print(request.getAttribute("data"));%>><p>
+                        <input type="date" id="data" name="data" value="<%out.print(request.getAttribute("data"));%>" ><p>
                             <label for="titulo">Titulo</label><p>
                         <input type="text" id="titulo" name="titulo" value="<%out.print(request.getAttribute("titulo"));%>"><p>
                             <label for="ingredientes">Ingredientes</label><p>
-                            <textarea id="ingredientes" name="ingredientes" rows="8" cols="35" <%out.print(request.getAttribute("ingredientes"));%>></textarea><p>
+                            <textarea id="ingredientes" name="ingredientes" rows="8" cols="35" ><%out.print(request.getAttribute("ingredientes"));%></textarea><p>
                             <label for="modopreparo">Modo de Preparo</label><p>
-                            <textarea id="modopreparo" name="modopreparo" rows="8" cols="35" <%out.print(request.getAttribute("modopreparo"));%>></textarea><p>
+                            <textarea id="modopreparo" name="modopreparo"  rows="8" cols="35"><%out.print(request.getAttribute("modopreparo"));%> </textarea><p>
                             <label for="imagem">Imagem</label><p>
                         <input type="file" id="imagem" name="imagem"><p> 
                             <input type="submit" id="adicionar" name="adicionar" value="Adicionar">

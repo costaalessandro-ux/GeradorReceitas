@@ -18,23 +18,23 @@ public class alterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-            /*    
-            String autor;
-            autor = request.getParameter("autor");
-            Receita receita = new Receita(autor);
-            ReceitaDao dao = new ReceitaDao();
-            dao.alter(receita);
-            */
+            
             String autor = request.getParameter("autor");
-            String data = request.getParameter("data");
-            String titulo = request.getParameter("titulo");
-            String ingredientes = request.getParameter("ingredientes");
-            String modopreparo = request.getParameter("modopreparo");
-            Receita receita = new Receita(autor,data,titulo,ingredientes,modopreparo);
+            Receita receita = new Receita();
             ReceitaDao dao = new ReceitaDao();
-            //System.out.println("info: "+autor);
-            //receita.setAutor(autor);
+            receita.setAutor(autor);       
             dao.alterSelect(receita);
+            
+            /*
+            System.out.println(receita.getAutor());
+            System.out.println(receita.getData());
+            System.out.println(receita.getTitulo());
+            System.out.println(receita.getIngredientes());
+            System.out.println(receita.getModopreparo());
+            */
+            
+            
+           
             request.setAttribute("autor", receita.getAutor());
             request.setAttribute("data", receita.getData());
             request.setAttribute("titulo", receita.getTitulo());
@@ -42,7 +42,9 @@ public class alterServlet extends HttpServlet {
             request.setAttribute("modopreparo", receita.getModopreparo());
             RequestDispatcher rd = request.getRequestDispatcher("formAlter.jsp");
             rd.forward(request, response);
-            
+           
+
+
         }
     
      @Override

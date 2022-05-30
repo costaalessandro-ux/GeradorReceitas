@@ -70,11 +70,7 @@ public class ReceitaDao {
         String SQL = "select * from registro where autor = ?";
         try{
             preparar = conexao.prepareStatement(SQL);
-            preparar.setString(2,receita.getAutor());
-            preparar.setString(3, receita.getData());
-            preparar.setString(4, receita.getTitulo());
-            preparar.setString(5, receita.getIngredientes());
-            preparar.setString(6, receita.getModopreparo());
+            preparar.setString(1,receita.getAutor());
             resultado = preparar.executeQuery();
             while(resultado.next()){
                 receita.setAutor(resultado.getString(2));
