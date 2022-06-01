@@ -35,8 +35,8 @@ public class updateInfos extends HttpServlet {
         receita.setIngredientes(request.getParameter("ingredientes"));
         receita.setModopreparo(request.getParameter("modopreparo"));
         dao.alter(receita);
-      
-        response.sendRedirect("selectInfos.jsp");
+        
+        response.sendRedirect("index.html");
     }
 
     
