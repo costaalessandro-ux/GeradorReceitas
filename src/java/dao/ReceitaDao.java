@@ -67,7 +67,7 @@ public class ReceitaDao {
     }
     
     public void alterSelect(Receita receita){
-        String SQL = "select * from registro where autor = ?";
+        SQL = "select * from registro where autor = ?";
         try{
             preparar = conexao.prepareStatement(SQL);
             preparar.setString(1,receita.getAutor());
@@ -87,14 +87,19 @@ public class ReceitaDao {
     
     public void alter(Receita receita) throws SQLException{
        SQL = "update registro set autor=?,data=?,titulo=?,ingredientes=?,modopreparo=? where autor=?";
+       try{
        preparar = conexao.prepareStatement(SQL);
        preparar.setString(1, receita.getAutor());
        preparar.setString(2, receita.getData());
        preparar.setString(3, receita.getTitulo());
        preparar.setString(4, receita.getIngredientes());
        preparar.setString(5, receita.getModopreparo());
-       preparar.execute();
-       preparar.close();
+       preparar.setString(6, receita.getAutor());
+       preparar.executeUpdate();
+       conexao.close(); 
+       }catch (Exception e){
+          System.out.println(e);
+       }  
     }
     
     public void delete(Receita receita) throws SQLException{

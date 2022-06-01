@@ -46,6 +46,32 @@ public class alterServlet extends HttpServlet {
 
 
         }
+    // fazer em uma outra servlet
+    /*
+    protected void updateInfos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        /*
+        System.out.println(request.getParameter("autor"));
+        System.out.println(request.getParameter("data"));
+        System.out.println(request.getParameter("titulo"));
+        System.out.println(request.getParameter("ingredientes"));
+        System.out.println(request.getParameter("modopreparo"));
+        
+        
+        Receita receita = new Receita();
+        ReceitaDao dao = new ReceitaDao();
+        receita.setAutor(request.getParameter("autor"));
+        receita.setData(request.getParameter("data"));
+        receita.setTitulo(request.getParameter("titulo"));
+        receita.setIngredientes(request.getParameter("ingredientes"));
+        receita.setModopreparo(request.getParameter("modopreparo"));
+        dao.alter(receita);
+        RequestDispatcher rd = request.getRequestDispatcher("selectInfos.jsp");
+        rd.forward(request, response);
+        response.sendRedirect("selectInfos.jsp");
+        
+    }
+        */
     
      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

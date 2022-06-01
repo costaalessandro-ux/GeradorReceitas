@@ -11,7 +11,7 @@
        <div class="container">
             <div class="text-center">
                 <div class="mb-3">
-                    <form action="alterServlet" enctype="multipart/form-data" >
+                    <form action="updateInfos" enctype="multipart/form-data" >
                         <label for="autor">Autor</label><p>
                         <input type="text" id="autor" name="autor" value="<%out.print(request.getAttribute("autor"));%>"><p>
                             <label for="data">Data</label><p>
@@ -22,8 +22,7 @@
                             <textarea id="ingredientes" name="ingredientes" rows="8" cols="35" ><%out.print(request.getAttribute("ingredientes"));%></textarea><p>
                             <label for="modopreparo">Modo de Preparo</label><p>
                             <textarea id="modopreparo" name="modopreparo"  rows="8" cols="35"><%out.print(request.getAttribute("modopreparo"));%> </textarea><p>
-                            <label for="imagem">Imagem</label><p>
-                        <input type="file" id="imagem" name="imagem"><p> 
+                           
                             <input type="submit" id="adicionar" name="adicionar" value="Adicionar">
                             <input type="reset" id="cancelar" name="cancelar" value="Cancelar">
                     </form>
