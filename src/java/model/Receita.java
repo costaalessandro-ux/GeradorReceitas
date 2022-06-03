@@ -18,8 +18,16 @@ public class Receita {
        this.autor = autor;
        
     }
-    
+     
      public Receita(String autor,String data, String titulo, String ingredientes, String modopreparo){
+        this.autor = autor;
+        this.data = data;
+        this.titulo = titulo;
+        this.ingredientes = ingredientes;
+        this.modopreparo = modopreparo; 
+    }
+    
+     public Receita(int id, String autor,String data, String titulo, String ingredientes, String modopreparo){
         this.autor = autor;
         this.data = data;
         this.titulo = titulo;

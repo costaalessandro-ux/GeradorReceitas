@@ -5,8 +5,6 @@
     ArrayList<Receita> list = (ArrayList<Receita>) 
     request.getAttribute("listarInfos");
 %>
-
-
 <!DOCTYPE html>
 <html>
     <head>

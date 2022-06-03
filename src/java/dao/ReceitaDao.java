@@ -95,6 +95,7 @@ public class ReceitaDao {
        preparar.setString(4, receita.getIngredientes());
        preparar.setString(5, receita.getModopreparo());
        preparar.setString(6, receita.getAutor());
+       //preparar.setInt(6, receita.getId());
        preparar.executeUpdate();
        conexao.close(); 
        }catch (Exception e){

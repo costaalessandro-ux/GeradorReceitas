@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static jdk.nashorn.internal.runtime.Debug.id;
 import model.Receita;
 
 /**
@@ -34,9 +35,10 @@ public class updateInfos extends HttpServlet {
         receita.setTitulo(request.getParameter("titulo"));
         receita.setIngredientes(request.getParameter("ingredientes"));
         receita.setModopreparo(request.getParameter("modopreparo"));
+        //receita.setId(Integer.parseInt(request.getParameter("id")));
         dao.alter(receita);
         
-        response.sendRedirect("index.html");
+        response.sendRedirect("ReceitaServlet");
     }
 
     
