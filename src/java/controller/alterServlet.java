@@ -19,10 +19,10 @@ public class alterServlet extends HttpServlet {
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
             
-            String autor = request.getParameter("autor");
+            Integer id = Integer.parseInt(request.getParameter("id"));
             Receita receita = new Receita();
             ReceitaDao dao = new ReceitaDao();
-            receita.setAutor(autor);       
+            receita.setId(id);       
             dao.alterSelect(receita);
             
             /*
@@ -34,7 +34,7 @@ public class alterServlet extends HttpServlet {
             */
             
             
-           
+            request.setAttribute("id", receita.getId());
             request.setAttribute("autor", receita.getAutor());
             request.setAttribute("data", receita.getData());
             request.setAttribute("titulo", receita.getTitulo());

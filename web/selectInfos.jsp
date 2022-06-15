@@ -16,6 +16,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Autor</th>
                     <th>Data</th>
                     <th>Titulo</th>
@@ -28,13 +29,14 @@
             <tbody>
              <% for(int i = 0; i < list.size(); i++) {%>
                 <tr>
+                    <td><%=list.get(i).getId()%></td>
                     <td><%=list.get(i).getAutor()%></td>
                     <td><%=list.get(i).getData()%></td>
                     <td><%=list.get(i).getTitulo()%></td>
                     <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
-                    <td><a href="alterServlet?autor=<%=list.get(i).getAutor()%>">ALTERAR</a></td>
-                    <td><a href="deleteServlet?autor=<%=list.get(i).getAutor()%>">EXCLUIR</a></td>
+                    <td><a href="alterServlet?id=<%=list.get(i).getId()%>">ALTERAR</a></td>
+                    <td><a href="deleteServlet?id=<%=list.get(i).getId()%>">EXCLUIR</a></td>
                 </tr>
                 <%}%>
             </tbody>

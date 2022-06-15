@@ -8,6 +8,7 @@ package controller;
 import dao.ReceitaDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,12 +31,12 @@ public class updateInfos extends HttpServlet {
         
         Receita receita = new Receita();
         ReceitaDao dao = new ReceitaDao();
+        receita.setId(parseInt(request.getParameter("id")));
         receita.setAutor(request.getParameter("autor"));
         receita.setData(request.getParameter("data"));
         receita.setTitulo(request.getParameter("titulo"));
         receita.setIngredientes(request.getParameter("ingredientes"));
         receita.setModopreparo(request.getParameter("modopreparo"));
-        //receita.setId(Integer.parseInt(request.getParameter("id")));
         dao.alter(receita);
         
         response.sendRedirect("ReceitaServlet");

@@ -12,6 +12,7 @@
             <div class="text-center">
                 <div class="mb-3">
                     <form action="updateInfos" enctype="multipart/form-data" >
+                        <input type="hidden" id="id" name="id" value="<%out.print(request.getAttribute("id"));%>"><p>
                         <label for="autor">Autor</label><p>
                         <input type="text" id="autor" name="autor" value="<%out.print(request.getAttribute("autor"));%>"><p>
                             <label for="data">Data</label><p>

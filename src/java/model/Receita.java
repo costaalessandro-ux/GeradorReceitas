@@ -14,8 +14,8 @@ public class Receita {
         super();
     }
     
-     public Receita(String autor){
-       this.autor = autor;
+     public Receita(int id){
+       this.id = id;
        
     }
      
@@ -28,6 +28,7 @@ public class Receita {
     }
     
      public Receita(int id, String autor,String data, String titulo, String ingredientes, String modopreparo){
+        this.id = id;
         this.autor = autor;
         this.data = data;
         this.titulo = titulo;

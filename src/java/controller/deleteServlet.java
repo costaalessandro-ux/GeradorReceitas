@@ -3,6 +3,7 @@ package controller;
 import dao.ReceitaDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +18,10 @@ public class deleteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        String autor;
-            autor = request.getParameter("autor");
-            Receita receita = new Receita(autor);
+        
+            int id;
+        id = parseInt(request.getParameter("id"));
+            Receita receita = new Receita(id);
             ReceitaDao dao = new ReceitaDao();
             dao.delete(receita);
         try ( PrintWriter out = response.getWriter()) {
