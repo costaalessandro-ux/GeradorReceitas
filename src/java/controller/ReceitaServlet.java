@@ -23,7 +23,6 @@ public class ReceitaServlet extends HttpServlet {
         super();
     }
     
-
     // listar infos
     protected void listarInfos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
@@ -34,23 +33,27 @@ public class ReceitaServlet extends HttpServlet {
         rd.forward(request, response);
         response.sendRedirect("selectInfos.jsp");
     }
+    
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        String autor, data, titulo, ingredientes, modopreparo;
+            //InputStream imagem = null;
+            autor = request.getParameter("autor");
+            data = request.getParameter("data");
+            titulo = request.getParameter("titulo");
+            ingredientes = request.getParameter("ingredientes");
+            modopreparo = request.getParameter("modopreparo");
+            //imagem = request(imagem);
+            Receita receita = new Receita(autor, data, titulo, ingredientes, modopreparo);
+            ReceitaDao dao = new ReceitaDao();
+            dao.inserir(receita);
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        /*
-        // try do processRequest
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-        
-        // try do listarInfos
-        
-        
+    
         try {
             listarInfos(request, response);
         } catch (SQLException ex) {
@@ -64,31 +67,18 @@ public class ReceitaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        /*
+        System.out.println("POST - CADASTRO REALIZADO COM SUCESSO");
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-        
-        /*
-        try {
-            listarInfos(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+      
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+   
     @Override
     public String getServletInfo() {
         return "Short description";
