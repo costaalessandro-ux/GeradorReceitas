@@ -2,7 +2,6 @@ package controller;
 
 import dao.ReceitaDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,27 +17,25 @@ public class alterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-            
-            Integer id = Integer.parseInt(request.getParameter("id"));
-            Receita receita = new Receita();
-            ReceitaDao dao = new ReceitaDao();
-            receita.setId(id);       
-            dao.alterSelect(receita);
-            
-            request.setAttribute("id", receita.getId());
-            request.setAttribute("autor", receita.getAutor());
-            request.setAttribute("data", receita.getData());
-            request.setAttribute("titulo", receita.getTitulo());
-            request.setAttribute("ingredientes", receita.getIngredientes());
-            request.setAttribute("modopreparo", receita.getModopreparo());
-            RequestDispatcher rd = request.getRequestDispatcher("formAlter.jsp");
-            rd.forward(request, response);
-           
 
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        Receita receita = new Receita();
+        ReceitaDao dao = new ReceitaDao();
+        receita.setId(id);
+        dao.alterSelect(receita);
 
-        }
-   
-     @Override
+        request.setAttribute("id", receita.getId());
+        request.setAttribute("autor", receita.getAutor());
+        request.setAttribute("data", receita.getData());
+        request.setAttribute("titulo", receita.getTitulo());
+        request.setAttribute("ingredientes", receita.getIngredientes());
+        request.setAttribute("modopreparo", receita.getModopreparo());
+        RequestDispatcher rd = request.getRequestDispatcher("formAlter.jsp");
+        rd.forward(request, response);
+
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -53,22 +50,7 @@ public class alterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     }
 
-
+}

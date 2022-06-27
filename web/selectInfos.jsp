@@ -2,8 +2,7 @@
 <%@page import="model.Receita"%>
 <%@page import="java.util.ArrayList"%>
 <%
-    ArrayList<Receita> list = (ArrayList<Receita>) 
-    request.getAttribute("listarInfos");
+    ArrayList<Receita> list = (ArrayList<Receita>) request.getAttribute("listarInfos");
 %>
 <!DOCTYPE html>
 <html>
@@ -25,9 +24,8 @@
                     <th colspan=\"2\">Ações</th>
                 </tr>
             </thead>
-            
             <tbody>
-             <% for(int i = 0; i < list.size(); i++) {%>
+                <% for (int i = 0; i < list.size(); i++) {%>
                 <tr>
                     <td><%=list.get(i).getId()%></td>
                     <td><%=list.get(i).getAutor()%></td>
@@ -41,8 +39,7 @@
                 <%}%>
             </tbody>
         </table>
-            <p>
-                <a href="index.html">VOLTAR</a></p>
-           
+        <p>
+            <a href="index.html">VOLTAR</a></p>
     </body>
 </html>

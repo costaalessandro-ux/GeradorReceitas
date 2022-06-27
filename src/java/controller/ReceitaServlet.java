@@ -4,7 +4,6 @@ import dao.ReceitaDao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -17,14 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import model.Receita;
 
 public class ReceitaServlet extends HttpServlet {
-    
-    
+
     Receita receita = new Receita();
-    
-    public ReceitaServlet(){
+
+    public ReceitaServlet() {
         super();
     }
-    
+
     // listar infos
     protected void listarInfos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
@@ -35,33 +33,33 @@ public class ReceitaServlet extends HttpServlet {
         rd.forward(request, response);
         response.sendRedirect("selectInfos.jsp");
     }
-    
-     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String autor, data, titulo, ingredientes, modopreparo;
-            //InputStream imagem = null;
-            autor = request.getParameter("autor");
-            data = request.getParameter("data");
-            titulo = request.getParameter("titulo");
-            ingredientes = request.getParameter("ingredientes");
-            modopreparo = request.getParameter("modopreparo");
-            //imagem = request(imagem);
-            Receita receita = new Receita(autor, data, titulo, ingredientes, modopreparo);
-            ReceitaDao dao = new ReceitaDao();
-            dao.inserir(receita);
-             try ( PrintWriter out = response.getWriter()) {
-            
+        //InputStream imagem = null;
+        autor = request.getParameter("autor");
+        data = request.getParameter("data");
+        titulo = request.getParameter("titulo");
+        ingredientes = request.getParameter("ingredientes");
+        modopreparo = request.getParameter("modopreparo");
+        //imagem = request(imagem);
+        Receita receita = new Receita(autor, data, titulo, ingredientes, modopreparo);
+        ReceitaDao dao = new ReceitaDao();
+        dao.inserir(receita);
+        try ( PrintWriter out = response.getWriter()) {
+
             out.println("Cadastro realizado com sucesso");
             out.println("<a href='ReceitaServlet'> Voltar </a>");
         }
-            
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+
         try {
             listarInfos(request, response);
         } catch (SQLException ex) {
@@ -69,25 +67,24 @@ public class ReceitaServlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         try {
             processRequest(request, response);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";
