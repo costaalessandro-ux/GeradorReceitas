@@ -3,6 +3,8 @@ package controller;
 import dao.ReceitaDao;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -48,6 +50,12 @@ public class ReceitaServlet extends HttpServlet {
             Receita receita = new Receita(autor, data, titulo, ingredientes, modopreparo);
             ReceitaDao dao = new ReceitaDao();
             dao.inserir(receita);
+             try ( PrintWriter out = response.getWriter()) {
+            
+            out.println("Cadastro realizado com sucesso");
+            out.println("<a href='ReceitaServlet'> Voltar </a>");
+        }
+            
     }
 
     @Override
@@ -67,9 +75,10 @@ public class ReceitaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("POST - CADASTRO REALIZADO COM SUCESSO");
+       
         try {
             processRequest(request, response);
+            
         } catch (SQLException ex) {
             Logger.getLogger(ReceitaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

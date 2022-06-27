@@ -27,6 +27,7 @@ public class deleteServlet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             
             out.println("Exclusão realizada com sucesso.");
+            out.println("<a href='ReceitaServlet'> Voltar </a>");
         }
     }
 
@@ -47,13 +48,7 @@ public class deleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(deleteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(deleteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
     }
 
     /**

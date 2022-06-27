@@ -25,15 +25,6 @@ public class alterServlet extends HttpServlet {
             receita.setId(id);       
             dao.alterSelect(receita);
             
-            /*
-            System.out.println(receita.getAutor());
-            System.out.println(receita.getData());
-            System.out.println(receita.getTitulo());
-            System.out.println(receita.getIngredientes());
-            System.out.println(receita.getModopreparo());
-            */
-            
-            
             request.setAttribute("id", receita.getId());
             request.setAttribute("autor", receita.getAutor());
             request.setAttribute("data", receita.getData());
@@ -46,33 +37,7 @@ public class alterServlet extends HttpServlet {
 
 
         }
-    // fazer em uma outra servlet
-    /*
-    protected void updateInfos(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-        /*
-        System.out.println(request.getParameter("autor"));
-        System.out.println(request.getParameter("data"));
-        System.out.println(request.getParameter("titulo"));
-        System.out.println(request.getParameter("ingredientes"));
-        System.out.println(request.getParameter("modopreparo"));
-        
-        
-        Receita receita = new Receita();
-        ReceitaDao dao = new ReceitaDao();
-        receita.setAutor(request.getParameter("autor"));
-        receita.setData(request.getParameter("data"));
-        receita.setTitulo(request.getParameter("titulo"));
-        receita.setIngredientes(request.getParameter("ingredientes"));
-        receita.setModopreparo(request.getParameter("modopreparo"));
-        dao.alter(receita);
-        RequestDispatcher rd = request.getRequestDispatcher("selectInfos.jsp");
-        rd.forward(request, response);
-        response.sendRedirect("selectInfos.jsp");
-        
-    }
-        */
-    
+   
      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -88,13 +53,7 @@ public class alterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(alterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(alterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
     
     
