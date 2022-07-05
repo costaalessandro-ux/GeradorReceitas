@@ -11,7 +11,7 @@
         <title>Gerador de Receitas</title>
     </head>
     <body>
-        <h1>Select Infos</h1>
+        <h1>Lista de Receitas</h1>
         <table>
             <thead>
                 <tr>
@@ -34,12 +34,13 @@
                     <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
                     <td><a href="alterServlet?id=<%=list.get(i).getId()%>">ALTERAR</a></td>
-                    <td><a href="deleteServlet?id=<%=list.get(i).getId()%>">EXCLUIR</a></td>
+                    <td><a href="javascript:confirmaExclusao(<%=list.get(i).getId()%>)" class="botao1">EXCLUIR</a></td>
                 </tr>
                 <%}%>
             </tbody>
         </table>
         <p>
             <a href="index.html">VOLTAR</a></p>
+        <script src="assets/confirmacao.js" type="text/javascript"></script>
     </body>
 </html>
