@@ -33,8 +33,8 @@
                     <td><%=list.get(i).getTitulo()%></td>
                     <td><%=list.get(i).getIngredientes()%></td>
                     <td><%=list.get(i).getModopreparo()%></td>
-                    <td><a href="alterServlet?id=<%=list.get(i).getId()%>">ALTERAR</a></td>
-                    <td><a href="javascript:confirmaExclusao(<%=list.get(i).getId()%>)" class="botao1">EXCLUIR</a></td>
+                    <td><a href="javascript:confirmaAlteracao(<%=list.get(i).getId()%>)" class="botao1">ALTERAR</a></td>
+                    <td><a href="javascript:confirmaExclusao(<%=list.get(i).getId()%>)" class="botao2">EXCLUIR</a></td>
                 </tr>
                 <%}%>
             </tbody>
