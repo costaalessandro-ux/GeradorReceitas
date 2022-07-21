@@ -6,71 +6,79 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-              <link rel="stylesheet" href="assets/styles/style.css" type="text/css"/>
-
+        <link rel="stylesheet" href="/styles/style.css" type="text/css"/>
     </head>
-    <header><center><h1>Gerador de Receitas </h1> </center></header>
-    <body>
-        <div class="container">
-            <div class="text-center">
-                <div class="mb-3">
-                    <form action="ReceitaServlet" method="post">
-                        
-                        
-                        
-                        <!-- 
-                        <label for="autor">Autor</label><p>
-                        <input type="text" id="autor" name="autor"><p>
-                            <label for="data">Data</label><p>
-                        <input type="date" id="data" name="data"><p>
-                            <label for="titulo">Titulo</label><p>
-                        <input type="text" id="titulo" name="titulo"><p>
-                            <label for="ingredientes">Ingredientes</label><p>
-                            <textarea id="ingredientes" name="ingredientes" rows="8" cols="35"></textarea><p>
-                            <label for="modopreparo">Modo de Preparo</label><p>
-                            <textarea id="modopreparo" name="modopreparo" rows="8" cols="35"></textarea><p>
-                            <label for="imagem">Imagem</label><p>
-                        <input type="file" id="imagem" name="imagem"><p> 
-                            <input type="submit" id="adicionar" name="adicionar" value="Adicionar" class="btn btn-primary">
-                            <input type="reset" id="cancelar" name="cancelar" value="Cancelar" class="btn btn-danger">
-                         
-                        -->
-                            
-                          
-                            
-                             <label for="autor" class="form-label"> </label>
-                        <input type="text" class="form-control text-center" id="autor" name="autor" placeholder="Nome do Autor">
-
-
-
-                        <label for="data" class="form-label"></label>
-                        <input type="date" class="form-control text-center" id="data" name="data">
-
-
-                        <div class="mb-3">
-                            <label for="titulo" class="form-label"></label>
-                            <input type="text" class="form-control text-center" id="titulo" name="titulo" placeholder="Nome da Receita">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="ingredientes" class="form-label"></label>
-                            <textarea class="form-control text-center" id="ingredientes" name="ingredientes" rows="3" placeholder="Ingredientes"></textarea>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="modopreparo" class="form-label"></label>
-                            <textarea class="form-control text-center" id="modopreparo" name="modopreparo" rows="3"  placeholder="Modo de Preparo"></textarea>
-                        </div>
-                            
-                        <input type="submit" id="adicionar" name="adicionar" value="Adicionar" class="btn btn-primary">
-                            <input type="reset" id="cancelar" name="cancelar" value="Cancelar" class="btn btn-danger">
-                            
-                       -->
-                    </form>
-                    <p><a href="ReceitaServlet"/> Lista de Receitas </a></p>
-                    <p> <a href="index.html"/> Voltar </a></p>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand">Gerador de Receitas</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectInfos.jsp">Lista de Receita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gerador.html">Criar Receitas</a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </nav>
+    </header>
+    <body>
+        <div class="container color-black">
+            <div class="card w-100 my-5">
+                <div class="card-body">
+                    <h1 class="card-title text-center"> Gerador de Receitas </h1>
+                    <form action="ReceitaServlet" method="post">
+                        <div class="row my-4">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="floatingInput" name="autor" placeholder="Nome do Autor">
+                                    <label for="floatingInput">Nome do Autor</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="floatingInput" name="data">
+                                    <label  for="floatingInput">Data de Criação</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="floatingInput" name="titulo" placeholder="Nome da Receita">
+                                    <label for="floatingInput">Titulo da Receita</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="floatingInput" name="ingredientes" rows="3" placeholder="Ingredientes"></textarea>
+                                    <label for="floatingInput">Ingredientes</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="floatingInput" name="modopreparo" rows="3"  placeholder="Modo de Preparo"></textarea>
+                                <label for="floatingInput">Modo de Preparo</label>
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="form-group col-12 mt-4 text-center">
+                                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" class="btn btn-danger">
+                                <input type="submit" id="adicionar" name="adicionar" value="Adicionar" class="btn btn-primary" >
+                            </div>
+                        </div>
+                    </form>
+                </div> 
             </div>
         </div>
     </body>
