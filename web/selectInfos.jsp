@@ -40,24 +40,29 @@
     </header>
     <body>
         <div class="container color-black">
-            <div class="card w-100 my-5">
-                <div class="card card-center" style="width: 18rem;">
+            <div class="row my-4">
+                <div class="col-6">
                     <% for (int i = 0; i < list.size(); i++) {%>
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><h4><%=list.get(i).getTitulo()%></h4>
+                    <!-- Card individual -->
+
+                    <div class="card card-center m-3" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><h4><%=list.get(i).getTitulo()%></h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><h6>ID:</h6><%=list.get(i).getId()%></li>
+                            <li class="list-group-item"><h6>Ingredientes:</h6><%=list.get(i).getIngredientes()%></li>
+                            <li class="list-group-item"><h6>Modo de Preparo:</h6><%=list.get(i).getModopreparo()%></li>
+                            <li class="list-group-item"><h6>Autor:</h6><%=list.get(i).getAutor()%></li>
+                            <li class="list-group-item"><h6>Data de Criação:</h6><%=list.get(i).getData()%></li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="javascript:confirmaAlteracao(<%=list.get(i).getId()%>)" class="card-link">ALTERAR</a>
+                            <a href="javascript:confirmaExclusao(<%=list.get(i).getId()%>)" class="card-link">EXCLUIR</a>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><h6>Ingredientes:</h6><%=list.get(i).getIngredientes()%></li>
-                        <li class="list-group-item"><h6>Modo de Preparo:</h6><%=list.get(i).getModopreparo()%></li>
-                        <li class="list-group-item"><h6>Modo de Preparo:</h6><%=list.get(i).getId()%></li>
-                        <li class="list-group-item"><h6>Autor:</h6><%=list.get(i).getAutor()%></li>
-                        <li class="list-group-item"><h6>Data de Criação:</h6><%=list.get(i).getData()%></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="javascript:confirmaAlteracao(<%=list.get(i).getId()%>)" class="card-link">ALTERAR</a>
-                        <a href="javascript:confirmaExclusao(<%=list.get(i).getId()%>)" class="card-link">EXCLUIR</a>
-                    </div>
+
                     <%}%>
                 </div>
             </div>
